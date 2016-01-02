@@ -21,6 +21,7 @@ public class Client {
             printStream = new PrintStream(socket.getOutputStream());
             scannerServer = new Scanner(socket.getInputStream());
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
