@@ -3,9 +3,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-/**
- * Created by georgipavlov on 13.12.15.
- */
+
 public class Server implements Runnable {
     Socket socket;
     Scanner scanner;
@@ -44,7 +42,11 @@ public class Server implements Runnable {
                     writer.print("Enter fnum");
                     fNum = scanner.nextDouble();
                     car = new Car(mark,price,fNum);
-                    carFirm.soldCar(car);
+                    try {
+                        carFirm.soldCar(car);
+                    } catch (MyExeption myExeption) {
+                        myExeption.printStackTrace();
+                    }
                     continue p;
                 }
                 case "add car":{
@@ -63,7 +65,11 @@ public class Server implements Runnable {
                     continue p;
                 }
                 case "Total":{
-                    writer.print(carFirm.getTotalPrice());
+                    try {
+                        writer.print(carFirm.getTotalPrice());
+                    } catch (MyExeption myExeption) {
+                        myExeption.printStackTrace();
+                    }
                     continue p;
                 }
                 case "exit":{
@@ -71,7 +77,11 @@ public class Server implements Runnable {
                     continue p;
                 }
                 default:{
-                    //exeption
+                    try {
+                        throw new MyExeption("Error message");
+                    } catch (MyExeption myExeption) {
+                        myExeption.printStackTrace();
+                    }
                 }
             }
 

@@ -15,7 +15,7 @@ public class CarFirm {
         return count;
     }
 
-    public synchronized void soldCar(Car car){
+    public synchronized void soldCar(Car car) throws MyExeption {
         for (int i = 0; i <cars.size() ; i++) {
             if(cars.get(i).equals(car)){
                 cars.remove(i);
@@ -23,7 +23,7 @@ public class CarFirm {
                 return;
             }
         }
-        //exeption
+        throw new MyExeption("cant sold");
     }
 
     public synchronized void addCar(Car car){
@@ -31,7 +31,7 @@ public class CarFirm {
         count++;
     }
 
-    public synchronized double getTotalPrice(){
+    public synchronized double getTotalPrice() throws MyExeption {
         double totalPrise =0;
         double tempPrise;
         for (int i = 0; i <cars.size() ; i++) {
@@ -39,7 +39,7 @@ public class CarFirm {
             if(tempPrise != 0){
                 totalPrise += tempPrise;
             }else {
-                //exeption
+                throw new MyExeption("price err");
             }
         }
         return totalPrise;

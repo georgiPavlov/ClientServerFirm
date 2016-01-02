@@ -3,9 +3,6 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-/**
- * Created by georgipavlov on 13.12.15.
- */
 public class Client {
     Socket socket ;
 
@@ -29,6 +26,7 @@ public class Client {
         while(scanner.hasNext()){
             try {
                 printStream.print(scanner.nextLine());
+                System.out.println(scannerServer.next());
             }catch (NullPointerException e){
                 e.printStackTrace();
             }
